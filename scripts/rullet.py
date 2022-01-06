@@ -9,9 +9,10 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 pin=[4,17,27,22]
 StepCount = 8
-detly=3/1000
+detly=1/1000
 
-    
+angle=[90,180,270,360]
+
 Seq = list(range(0, StepCount))
 Seq[0] = [1,0,0,1]
 Seq[1] = [1,0,0,0]
@@ -38,7 +39,7 @@ def forward(delay, steps):
             time.sleep(delay)
 
 def rullet():
-    t=random.randint(0,360)
+    t=random.randint(0,4)
     d=360-t
     for i in range(3):
         forward(detly,360+30)
