@@ -40,8 +40,6 @@ def forward(delay, steps):
 def rullet():
     t=random.randint(0,360)
     d=360-t
-    for i in range(3):
-        forward(detly,360+30)
     forward(detly,t)
     print("戻るまで待って！")
     time.sleep(4)
