@@ -4,6 +4,8 @@
 import random
 import time
 import RPi.GPIO as GPIO
+import rospy
+from mypkg import color, colorResponse
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -11,7 +13,8 @@ pin=[4,17,27,22]
 StepCount = 8
 detly=1/1000
 
-angle=[0,90,180,270]
+angle[0]=[0,90,180,270]
+angle[1]=[90,180]
 
 Seq = list(range(0, StepCount))
 Seq[0] = [1,0,0,1]
@@ -38,17 +41,27 @@ def forward(delay, steps):
             setStep(Seq[j][0], Seq[j][1], Seq[j][2], Seq[j][3])
             time.sleep(delay)
 
-def rullet():
-    t=random.randint(0,4)
-    d=360-angle[t]
+def rullet(re):
+    t=angle[re][random.randint(0,4)]
+    d=360-t
     for i in range(3):
         forward(detly,360+30)
-    forward(detly,angle[t])
+    forward(detly,t)
     print("戻るまで待って！")
     time.sleep(4)
     forward(detly,d)
-    print(angle[t])
-    
-if __name__ == '__main__':
-    rullet()
+    print(t)
+    if 0 or 180:
+        judge=0
+    else 90 or 270:
+        judge=1
+    return colorResponse
+
+rospy.init_node('service_sever')
+service=rospy.Service('rullet_judge',color,rullet)
+
+
+
+#if __name__ == '__main__':
+  #  rullet()
     
