@@ -8,7 +8,7 @@ def cb(message):
     global n
     n=message.data*2
 
-
+/2
 rospy.init_node('twice')
 sub =rospy.Subscriber('count_up',Int32,cb)
 pub=rospy.Publisher('twice',Int32,queue_size=1)
