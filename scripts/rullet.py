@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import rospy
 import time
+import RPi.GPIO as GPIO
 
 GPIO.setwarnings(False)
 pin=[4,17,27,22]
@@ -20,7 +20,7 @@ Seq[5] = [0,0,1,0]
 Seq[6] = [0,0,1,1]
 Seq[7] = [0,0,0,1]
 
-for i in range(0,4)
+for i in range(4):
     GPIO.setup(pin[i], GPIO.OUT)
     
  def setStep(w1, w2, w3, w4):
@@ -38,7 +38,7 @@ def forward(delay, steps):
 def rullet():
     t=random.randint(0,360)
     d=360-t
-    for i in range(3)
+    for i in range(3):
         forward(1,360)
     forward(1,t)
     time.sleep(4)
