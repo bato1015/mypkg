@@ -53,7 +53,7 @@ def rullet(re):
     print("戻るまで待って！")
     time.sleep(4)
     forward(detly,d)
-    print(count)
+    print(t)
     return colorResponse(count)
 
 rospy.init_node('service_sever')
@@ -62,6 +62,6 @@ rospy.spin()
 
 
 
-#if __name__ == '__main__':
-  #  rullet()
+if __name__ == '__main__':
+  rullet(1)
     
