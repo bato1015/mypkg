@@ -9,7 +9,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 pin=[4,17,27,22]
 StepCount = 8
-detly=1/1000
+detly=3/1000
 
     
 Seq = list(range(0, StepCount))
