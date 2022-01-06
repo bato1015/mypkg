@@ -13,8 +13,8 @@ pin=[4,17,27,22]
 StepCount = 8
 detly=1/1000
 
-angle[0]=[0,90,180,270]
-angle[1]=[90,180,90,180]
+angle[0]=[90,180,90,180]
+angle[1]=[0,90,180,270]
 
 Seq = list(range(0, StepCount))
 Seq[0] = [1,0,0,1]
@@ -42,7 +42,8 @@ def forward(delay, steps):
             time.sleep(delay)
 
 def rullet(re):
-    t=angle[re][random.randint(0,4)]
+    count=random.randint(0,4)
+    t=angle[re][count]
     d=360-t
     for i in range(3):
         forward(detly,360+30)
@@ -50,15 +51,12 @@ def rullet(re):
     print("戻るまで待って！")
     time.sleep(4)
     forward(detly,d)
-    print(t)
-    if 0 or 180:
-        judge=0
-    else 90 or 270:
-        judge=1
-    return colorResponse
+    print(count)
+    return colorResponse(count)
 
 rospy.init_node('service_sever')
 service=rospy.Service('rullet_judge',color,rullet)
+rospy.spin()
 
 
 
