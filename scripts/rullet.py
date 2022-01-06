@@ -46,7 +46,7 @@ def rullet():
     print("戻るまで待って！")
     time.sleep(4)
     forward(detly,d)
-    
+    print(t)
     
 if __name__ == '__main__':
     rullet()
