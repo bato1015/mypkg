@@ -9,7 +9,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 pin=[4,17,27,22]
 StepCount = 8
-
+detly=1/1000
 
     
 Seq = list(range(0, StepCount))
@@ -41,10 +41,10 @@ def rullet():
     t=random.randint(0,360)
     d=360-t
     for i in range(3):
-        forward(1,360)
-    forward(1,t)
+        forward(detly,360)
+    forward(detly,t)
     time.sleep(4)
-    forward(1,d)
+    forward(detly,d)
     
     
 if __name__ == '__main__':
