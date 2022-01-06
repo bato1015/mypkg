@@ -4,6 +4,7 @@
 import time
 import RPi.GPIO as GPIO
 
+GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 pin=[4,17,27,22]
 StepCount = 8
