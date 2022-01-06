@@ -1,11 +1,11 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 import rospy
 import random
 import time
 import RPi.GPIO as GPIO
-from mypkg import color, colorResponse
+from mypkg.srv import color, colorResponse
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
