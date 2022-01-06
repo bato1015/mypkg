@@ -23,7 +23,7 @@ Seq[7] = [0,0,0,1]
 for i in range(4):
     GPIO.setup(pin[i], GPIO.OUT)
     
- def setStep(w1, w2, w3, w4):
+def setStep(w1, w2, w3, w4):
     GPIO.output(pin[0], w1)
     GPIO.output(pin[1], w2)
     GPIO.output(pin[2], w3)
