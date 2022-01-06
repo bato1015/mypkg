@@ -11,7 +11,7 @@ pin=[4,17,27,22]
 StepCount = 8
 detly=1/1000
 
-angle=[90,180,270,360]
+angle=[0,90,180,270]
 
 Seq = list(range(0, StepCount))
 Seq[0] = [1,0,0,1]
