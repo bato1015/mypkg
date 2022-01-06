@@ -43,6 +43,7 @@ def rullet():
     for i in range(3):
         forward(detly,360)
     forward(detly,t)
+    print("戻るまで待って！")
     time.sleep(4)
     forward(detly,d)
     
