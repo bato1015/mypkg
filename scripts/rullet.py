@@ -8,19 +8,20 @@ GPIO.setwarnings(False)
 pin=[4,17,27,22]
 StepCount = 8
 
-def pin_init():
-    Seq = list(range(0, StepCount))
-    Seq[0] = [1,0,0,1]
-    Seq[1] = [1,0,0,0]
-    Seq[2] = [1,1,0,0]
-    Seq[3] = [0,1,0,0]
-    Seq[4] = [0,1,1,0]
-    Seq[5] = [0,0,1,0]
-    Seq[6] = [0,0,1,1]
-    Seq[7] = [0,0,0,1]
 
-    for i in range(0,4)
-        GPIO.setup(pin[i], GPIO.OUT)
+    
+Seq = list(range(0, StepCount))
+Seq[0] = [1,0,0,1]
+Seq[1] = [1,0,0,0]
+Seq[2] = [1,1,0,0]
+Seq[3] = [0,1,0,0]
+Seq[4] = [0,1,1,0]
+Seq[5] = [0,0,1,0]
+Seq[6] = [0,0,1,1]
+Seq[7] = [0,0,0,1]
+
+for i in range(0,4)
+    GPIO.setup(pin[i], GPIO.OUT)
     
  def setStep(w1, w2, w3, w4):
     GPIO.output(pin[0], w1)
@@ -45,6 +46,5 @@ def rullet():
     
     
 if __name__ == '__main__':
-    pin_init()
     rullet()
     
