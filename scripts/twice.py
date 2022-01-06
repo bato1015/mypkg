@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 import rospy
 from std_msgs.msg import Int32
+form mypkg.srv import color
 
-n=0;
+def add_roulette_color_client(a):
+    rospy.wait_for_service('turtlesim_rotation')
+    try:
+        print(a)
+    except:
+        print("error")
 
 def cb(message):
     global n
