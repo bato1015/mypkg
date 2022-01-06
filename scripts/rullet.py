@@ -11,8 +11,10 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 pin=[4,17,27,22]
 StepCount = 8
+angleCount=2
 detly=1/1000
 
+angle = list(range(0, angleCount))
 angle[0]=[90,180,90,180]
 angle[1]=[0,90,180,270]
 
