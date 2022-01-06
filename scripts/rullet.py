@@ -14,7 +14,7 @@ StepCount = 8
 detly=1/1000
 
 angle[0]=[0,90,180,270]
-angle[1]=[90,180]
+angle[1]=[90,180,90,180]
 
 Seq = list(range(0, StepCount))
 Seq[0] = [1,0,0,1]
