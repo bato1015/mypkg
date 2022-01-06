@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import rospy
 import random
 import time
 import RPi.GPIO as GPIO
-import rospy
 from mypkg import color, colorResponse
 
 GPIO.setmode(GPIO.BCM)
