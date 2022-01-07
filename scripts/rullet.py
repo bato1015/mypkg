@@ -5,7 +5,7 @@ import rospy
 import random
 import time
 import RPi.GPIO as GPIO
-from mypkg.srv import color, colorResponse
+from std_msgs.msg import Int32
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -13,6 +13,8 @@ pin=[4,17,27,22]
 StepCount = 8
 angleCount=2
 detly=1/1000
+count=0
+v=-1
 
 angle = list(range(0, angleCount))
 angle[0]=[90,180,90,180]
@@ -43,9 +45,12 @@ def forward(delay, steps):
             setStep(Seq[j][0], Seq[j][1], Seq[j][2], Seq[j][3])
             time.sleep(delay)
 
-def rullet(re):
+def rullet(message1):
+    global v
+    v= message1.data
+    global count
     count=random.randint(0,4)
-    t=angle[re][count]
+    t=angle[message1.data][count]
     d=360-t
     for i in range(3):
         forward(detly,360+30)
@@ -53,15 +58,25 @@ def rullet(re):
     print("戻るまで待って！")
     time.sleep(4)
     forward(detly,d)
-    print(t)
-    return colorResponse(count)
+    print(v)
 
-rospy.init_node('service_sever')
-service=rospy.Service('rullet_judge',color,rullet)
-rospy.spin()
+
+
+#pub=rospy.Publisher('rulette_sever1',Int32,queue_size=100)
+#pub.publish(count)
 
 
 
 if __name__ == '__main__':
-  rullet(1)
-    
+ # rullet(1)
+    rospy.init_node('rulette_sever1')
+    pub=rospy.Publisher('rulette_sever1',Int32,queue_size=100)
+    rate=rospy.Rate(10)
+    sub=rospy.Subscriber('rullette_judge',Int32,rullet)
+    rospy.sleep(1)
+    print("r")
+
+
+    for i in range(10):
+        pub.publish(count)
+        rate.sleep()
