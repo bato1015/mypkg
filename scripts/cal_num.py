@@ -3,9 +3,9 @@
 import random
 import rospy
 from std_msgs.msg import Int32
+from mypkg.msg import money
 
 angleCount=2
-
 
 angle = list(range(0, angleCount))
 angle[1]=[0,1,2,3]
@@ -39,6 +39,17 @@ def win_judge(money):
     else:
         str1="down"
         return str1
+
+def string1(usr):
+    pub1=rospy.Publisher('result',money,queue_size=1)
+    msg=money()
+    if usr==0:
+        msg.result="loooose!!!!"
+    else:
+        msg.result="win!win!wni!"
+    msg.salary=usr
+    return msg
+
 if __name__ == '__main__': 
    rospy.init_node('sevice_client')
    pub=rospy.Publisher('rullette_judge1',Int32,queue_size=1)
@@ -48,8 +59,20 @@ if __name__ == '__main__':
    salary= int(input("money?"))
    user_num=select(ration)
    ru_num=random_num(ration)
-   money=judge(ration,salary,ru_num,user_num)
-   print(ration,salary,user_num,ru_num,money)
+   money1=judge(ration,salary,ru_num,user_num)
+   print(ration,salary,user_num,ru_num,money1)
+   
+
+   pub1=rospy.Publisher('result',money,queue_size=1)
+   msg=money()
+   if money1==0:
+         msg.result="loooooser!!!!!"
+   else:
+         msg.result="win!win!win!"
+   msg.salary=money1
+
    for i in range(1):
        pub.publish(ru_num)
-       rate.sleep()
+       for i in range(3):
+           pub1.publish(msg)
+           rate.sleep()

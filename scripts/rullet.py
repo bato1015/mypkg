@@ -7,6 +7,7 @@ import time
 import RPi.GPIO as GPIO
 from std_msgs.msg import Int32
 
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 pin=[4,17,27,22]
