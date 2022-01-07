@@ -66,7 +66,7 @@ def rullet(message1):
 if __name__ == '__main__':
  # rullet(1)
     rospy.init_node('rulette_sever1')
-    sub=rospy.Subscriber('rullette_judge',Int32,rullet)
+    sub=rospy.Subscriber('rullette_judge1',Int32,rullet)
     rospy.spin()
     print("r")
     
