@@ -75,8 +75,7 @@ if __name__ == '__main__':
     sub=rospy.Subscriber('rullette_judge',Int32,rullet)
     rospy.sleep(1)
     print("r")
-
-
+    
     for i in range(10):
         pub.publish(count)
         rate.sleep()
