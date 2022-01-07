@@ -16,9 +16,7 @@ detly=1/1000
 count=0
 v=-1
 
-angle = list(range(0, angleCount))
-angle[0]=[90,180,90,180]
-angle[1]=[0,90,180,270]
+angle=[0,90,180,270]
 
 Seq = list(range(0, StepCount))
 Seq[0] = [1,0,0,1]
@@ -48,9 +46,7 @@ def forward(delay, steps):
 def rullet(message1):
     global v
     v= message1.data
-    global count
-    count=random.randint(0,4)
-    t=angle[message1.data][count]
+    t=angle[v]
     d=360-t
     for i in range(3):
         forward(detly,360+30)
@@ -70,12 +66,8 @@ def rullet(message1):
 if __name__ == '__main__':
  # rullet(1)
     rospy.init_node('rulette_sever1')
-    pub=rospy.Publisher('rulette_sever1',Int32,queue_size=100)
-    rate=rospy.Rate(10)
     sub=rospy.Subscriber('rullette_judge',Int32,rullet)
-    rospy.sleep(1)
+    rospy.spin()
     print("r")
     
-    for i in range(10):
-        pub.publish(count)
-        rate.sleep()
+
