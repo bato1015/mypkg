@@ -3,7 +3,6 @@
 import random
 import rospy
 from std_msgs.msg import Int32
-from std_msgs.msg import string
 
 angleCount=2
 
@@ -35,15 +34,14 @@ def judge(twice,salary,ru_num,user_num):
 
 def win_judge(money):
     if money!=0:
-        str=f"当たり!{money}円獲得！"
-        return str
+        str1="hit"
+        return str1
     else:
-        str=f"ハズレ!"
-        return str
+        str1="down"
+        return str1
 if __name__ == '__main__': 
    rospy.init_node('sevice_client')
    pub=rospy.Publisher('rullette_judge1',Int32,queue_size=1)
-   pub_result=rospy.Publisher('result',string,queue_size=1)
    rate=rospy.Rate(10)
 
    ration = int(input("2?4?"))
@@ -54,5 +52,4 @@ if __name__ == '__main__':
    print(ration,salary,user_num,ru_num,money)
    for i in range(1):
        pub.publish(ru_num)
-       pub.publish(str)
        rate.sleep()
